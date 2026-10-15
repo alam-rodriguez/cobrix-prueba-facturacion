@@ -1,0 +1,6 @@
+node_modules
+data/cobrix.sqlite
+data/*.sqlite-wal
+data/*.sqlite-shm
+*.log
+.DS_Store

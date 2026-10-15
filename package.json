@@ -1,0 +1,25 @@
+{
+	"name": "cobrix-prueba-facturacion",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Prueba técnica: integrar Cobrix con la API de un administrador de facturas.",
+	"type": "module",
+	"engines": {
+		"node": ">=24"
+	},
+	"scripts": {
+		"start": "node --disable-warning=ExperimentalWarning src/main.ts",
+		"seed": "node --disable-warning=ExperimentalWarning src/billing-api/seed.ts",
+		"test": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 \"test/**/*.test.ts\"",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/node": "24.3.0",
+		"typescript": "5.9.2"
+	},
+	"dependencies": {
+		"@tanstack/query-core": "^5.104.3",
+		"axios": "^1.20.0",
+		"zustand": "^5.0.15"
+	}
+}
