@@ -8,7 +8,7 @@
 		"node": ">=24"
 	},
 	"scripts": {
-		"start": "node --disable-warning=ExperimentalWarning src/main.ts",
+		"start": "node --disable-warning=ExperimentalWarning --import=./src/load-env.ts src/main.ts",
 		"seed": "node --disable-warning=ExperimentalWarning src/billing-api/seed.ts",
 		"test": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 \"test/**/*.test.ts\"",
 		"typecheck": "tsc --noEmit"

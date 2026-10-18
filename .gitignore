@@ -1,5 +1,7 @@
 node_modules
+.env
 data/cobrix.sqlite
+data/cobrix.secret
 data/*.sqlite-wal
 data/*.sqlite-shm
 *.log

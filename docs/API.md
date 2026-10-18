@@ -22,18 +22,20 @@ La prueba simula los **dos lados** de una integración con un ISP, en un solo pr
 ## 2. Cómo se levanta
 
 ```bash
-npm install     # solo instala TypeScript para revisar tipos
+npm install
 npm start       # fija la fecha de la prueba en 2026-10-13
 ```
 
+No hace falta configurar variables para el sandbox local: el panel usa `operador` / `cobrix-local-demo-2026` en loopback y genera `data/cobrix.secret` para cifrar las credenciales del ISP. Conserva ese archivo entre reinicios. Para personalizar el entorno puedes crear `.env` a partir de `.env.example`; no se requiere para el arranque.
+
 | Qué | Dónde |
 | --- | --- |
-| Panel (esqueleto con las pantallas por implementar) | http://127.0.0.1:4300 |
+| Panel (requiere autenticación HTTP Basic) | http://127.0.0.1:4300 |
 | API del administrador | http://127.0.0.1:4310/api/v1 |
 | **Swagger para probar la API** | **http://127.0.0.1:4310/docs** |
 | Especificación OpenAPI | http://127.0.0.1:4310/openapi.json |
 
-Credenciales de la API: usuario `cobrix`, contraseña `cobrix-sandbox`.
+Credenciales de la API: usuario `cobrix`, contraseña `cobrix-sandbox`. El simulador HTTP se inicia solo en modo loopback; al enlazar el panel fuera de loopback se omite el simulador y se exigen credenciales, clave de cifrado y HTTPS. Un ISP remoto debe usar HTTPS y estar incluido en `COBRIX_API_HOSTS` (nombres exactos separados por coma).
 
 ## 3. La API paso a paso
 
@@ -116,4 +118,3 @@ Una fila por cuota y por cada factura de cobro que la tocó. Lo importante está
 La base trae cuotas por periodo (`2026-03`, `2026-10`…). Lo que la API considera «pendiente» depende de la fecha de hoy, así que `npm start` fija la fecha en **2026-10-13** (`SANDBOX_TODAY`). Con esa fecha valen los números de los criterios de aceptación.
 
 Si regeneras la base con `npm run seed`, se crea con el mes actual y los números cambian.
-
